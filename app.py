@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-df = pd.read_excel("합불데이터.xlsx")
+df = pd.read_excel("univ_data.xlsx")
 
 st.set_page_config(page_title="대학 지원 가능성 조회", layout="wide")
 st.title("🎓 대학 지원 가능성 조회 프로그램")
