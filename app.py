@@ -29,10 +29,16 @@ if selected_type != "전체":
 if selected_major != "전체":
     filtered_df = filtered_df[filtered_df['모집단위'] == selected_major]
 
-# 점수 기반 필터링
+# 점수 기반 필터링 (±5% 범위 적용)
 if mode == "내 점수로 조회":
     user_score = st.number_input("본인의 학생부 성적(등급)을 입력하세요 (예: 1.8)", min_value=0.0, max_value=9.0, step=0.01)
-    result_df = filtered_df[filtered_df['성적'] >= user_score]
+    lower_bound = user_score * 0.95
+    upper_bound = user_score * 1.05
+    st.write(f"±5% 적용된 실제 검색 범위: {lower_bound:.2f} ~ {upper_bound:.2f}")
+    result_df = filtered_df[
+        (filtered_df['성적'] >= lower_bound) &
+        (filtered_df['성적'] <= upper_bound)
+    ]
 
 # 성적 구간 기반 필터링
 else:
