@@ -1,13 +1,7 @@
 import streamlit as st
 import pandas as pd
-import os
 
-# 현재 파일 기준 경로 설정
-base_path = os.path.dirname(__file__)
-file_path = os.path.join(base_path, "합불데이터.xlsx")
-
-# 데이터 불러오기
-df = pd.read_excel(file_path)
+df = pd.read_excel("합불데이터.xlsx")
 
 st.set_page_config(page_title="대학 지원 가능성 조회", layout="wide")
 st.title("🎓 대학 지원 가능성 조회 프로그램")
